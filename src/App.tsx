@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { Suspense } from 'react'
-import SimpleScene from './components/SimpleScene'
+import AmazingScene from './components/AmazingScene'
 import ErrorBoundary from './components/ErrorBoundary'
 
 function LoadingFallback() {
@@ -25,7 +25,7 @@ function App() {
             camera={{ position: [0, 5, 20], fov: 75 }}
             gl={{ antialias: true, alpha: false }}
           >
-            <SimpleScene />
+            <AmazingScene />
             
             {/* Orbit controls for camera movement */}
             <OrbitControls 
@@ -41,14 +41,31 @@ function App() {
           </Canvas>
         </Suspense>
         
-        {/* UI Overlay */}
-        <div className="absolute top-4 left-4 text-white z-10 bg-black bg-opacity-50 p-4 rounded-lg">
-          <h1 className="text-2xl font-bold mb-2">Solar System Visualization</h1>
-          <div className="text-sm opacity-80 space-y-1">
-            <p>🖱️ Mouse: Orbit around the solar system</p>
-            <p>🔍 Scroll: Zoom in/out</p>
-            <p>🖱️ Right-click: Pan the view</p>
-            <p>⭐ Watching planets orbit in real-time</p>
+        {/* Enhanced UI Overlay */}
+        <div className="absolute top-4 left-4 text-white z-10 bg-gradient-to-br from-purple-900 via-blue-900 to-black bg-opacity-80 backdrop-blur-sm p-6 rounded-xl border border-purple-500 border-opacity-30 shadow-2xl">
+          <h1 className="text-3xl font-bold mb-3 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+            🌌 Amazing Solar System
+          </h1>
+          <div className="text-sm space-y-2">
+            <p className="flex items-center gap-2">
+              <span className="text-yellow-400">🖱️</span> 
+              <span className="text-blue-200">Mouse: Orbit around the cosmos</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="text-green-400">🔍</span> 
+              <span className="text-blue-200">Scroll: Zoom through space</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="text-purple-400">🎯</span> 
+              <span className="text-blue-200">Click planets: Explore worlds</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="text-orange-400">⭐</span> 
+              <span className="text-blue-200">Real-time orbital mechanics</span>
+            </p>
+          </div>
+          <div className="mt-3 text-xs text-purple-300 opacity-75">
+            Experience the wonder of our solar system
           </div>
         </div>
       </div>
