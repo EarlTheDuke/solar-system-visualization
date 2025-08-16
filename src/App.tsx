@@ -41,15 +41,16 @@ function App() {
             />
           </Canvas>
         </Suspense>
-      
-      {/* UI Overlay */}
-      <div className="absolute top-4 left-4 text-white z-10 bg-black bg-opacity-50 p-4 rounded-lg">
-        <h1 className="text-2xl font-bold mb-2">Solar System Visualization</h1>
-        <div className="text-sm opacity-80 space-y-1">
-          <p>🖱️ Mouse: Orbit around the solar system</p>
-          <p>🔍 Scroll: Zoom in/out</p>
-          <p>🖱️ Right-click: Pan the view</p>
-          <p>⭐ Watching planets orbit in real-time</p>
+        
+        {/* UI Overlay */}
+        <div className="absolute top-4 left-4 text-white z-10 bg-black bg-opacity-50 p-4 rounded-lg">
+          <h1 className="text-2xl font-bold mb-2">Solar System Visualization</h1>
+          <div className="text-sm opacity-80 space-y-1">
+            <p>🖱️ Mouse: Orbit around the solar system</p>
+            <p>🔍 Scroll: Zoom in/out</p>
+            <p>🖱️ Right-click: Pan the view</p>
+            <p>⭐ Watching planets orbit in real-time</p>
+          </div>
         </div>
       </div>
     </ErrorBoundary>
