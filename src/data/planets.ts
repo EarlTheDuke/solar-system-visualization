@@ -70,7 +70,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 0,
     orbitalPeriod: 0,
     rotationPeriod: 609.12, // 25.4 Earth days at equator
-    textureUrl: "textures/sun.jpg",
+    textureUrl: "/textures/sun.jpg",
     hasRings: false,
     moons: [],
     color: "#FDB813",
@@ -84,7 +84,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 0.39, // Scaled down from 0.39 AU
     orbitalPeriod: 88,
     rotationPeriod: 1407.6, // 58.6 Earth days
-    textureUrl: "textures/mercury.jpg",
+    textureUrl: "/textures/mercury.jpg",
     hasRings: false,
     moons: [],
     color: "#8C7853",
@@ -98,7 +98,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 0.72,
     orbitalPeriod: 225,
     rotationPeriod: -5832.5, // Negative because it rotates backwards
-    textureUrl: "textures/venus.jpg",
+    textureUrl: "/textures/venus.jpg",
     hasRings: false,
     moons: [],
     color: "#FFC649",
@@ -112,7 +112,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 1.0,
     orbitalPeriod: 365.25,
     rotationPeriod: 24,
-    textureUrl: "textures/earth.jpg",
+    textureUrl: "/textures/earth.jpg",
     hasRings: false,
     moons: [earthMoon],
     color: "#6B93D6",
@@ -126,7 +126,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 1.52,
     orbitalPeriod: 687,
     rotationPeriod: 24.6,
-    textureUrl: "textures/mars.jpg",
+    textureUrl: "/textures/mars.jpg",
     hasRings: false,
     moons: marsMoons,
     color: "#CD5C5C",
@@ -140,7 +140,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 3.2, // Logarithmically scaled from 5.2 AU
     orbitalPeriod: 4333, // ~12 years
     rotationPeriod: 9.9,
-    textureUrl: "textures/jupiter.jpg",
+    textureUrl: "/textures/jupiter.jpg",
     hasRings: true,
     moons: jupiterMoons,
     color: "#D8CA9D",
@@ -154,7 +154,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 4.8, // Logarithmically scaled from 9.5 AU
     orbitalPeriod: 10759, // ~29.5 years
     rotationPeriod: 10.7,
-    textureUrl: "textures/saturn.jpg",
+    textureUrl: "/textures/saturn.jpg",
     hasRings: true,
     moons: saturnMoons,
     color: "#FAD5A5",
@@ -168,7 +168,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 7.2, // Logarithmically scaled from 19.2 AU
     orbitalPeriod: 30687, // ~84 years
     rotationPeriod: -17.2, // Negative because it rotates on its side backwards
-    textureUrl: "textures/uranus.jpg",
+    textureUrl: "/textures/uranus.jpg",
     hasRings: true,
     moons: uranusMoons,
     color: "#4FD0E7",
@@ -182,7 +182,7 @@ export const solarSystemData: Planet[] = [
     distanceFromSun: 9.0, // Logarithmically scaled from 30.1 AU
     orbitalPeriod: 60190, // ~165 years
     rotationPeriod: 16.1,
-    textureUrl: "textures/neptune.jpg",
+    textureUrl: "/textures/neptune.jpg",
     hasRings: true,
     moons: neptuneMoons,
     color: "#4B70DD",

@@ -1,0 +1,16 @@
+This folder will contain planet texture files.
+
+For now, the application will use fallback colors if textures fail to load.
+
+Recommended texture files to add:
+- sun.jpg
+- mercury.jpg  
+- venus.jpg
+- earth.jpg
+- mars.jpg
+- jupiter.jpg
+- saturn.jpg
+- uranus.jpg
+- neptune.jpg
+
+Download high-quality textures from NASA or other space agencies.
