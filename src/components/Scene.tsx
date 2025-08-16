@@ -46,26 +46,12 @@ function OrbitingPlanets() {
   
   return (
     <>
-      {planets.map((planetData) => {
-        // Calculate orbital position
-        const time = Date.now() * 0.001
-        const orbitalSpeed = getOrbitalSpeed(planetData)
-        const angle = time * orbitalSpeed
-        const distance = planetData.distanceFromSun * 10
-        
-        const orbitalPosition = {
-          x: distance * Math.cos(angle),
-          z: distance * Math.sin(angle)
-        }
-        
-        return (
-          <Planet 
-            key={planetData.name} 
-            planetData={planetData} 
-            orbitalPosition={orbitalPosition}
-          />
-        )
-      })}
+      {planets.map((planetData) => (
+        <Planet 
+          key={planetData.name} 
+          planetData={planetData} 
+        />
+      ))}
     </>
   )
 }

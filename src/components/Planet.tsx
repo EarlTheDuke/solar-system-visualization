@@ -1,11 +1,10 @@
 import { useRef, useState, useMemo } from 'react'
-import { useFrame, useLoader } from '@react-three/fiber'
-import { Mesh, TextureLoader, Group } from 'three'
+import { useFrame } from '@react-three/fiber'
+import { Mesh, Group } from 'three'
 import { Planet as PlanetData, Moon, getScaledRadius, getOrbitalSpeed, getRotationSpeed } from '../data/planets'
 
 interface PlanetProps {
   planetData: PlanetData
-  orbitalPosition?: { x: number; z: number }
 }
 
 function PlanetMoon({ moon, planetRadius }: { moon: Moon; planetRadius: number }) {
@@ -44,34 +43,33 @@ function PlanetMoon({ moon, planetRadius }: { moon: Moon; planetRadius: number }
   )
 }
 
-export default function Planet({ planetData, orbitalPosition }: PlanetProps) {
+export default function Planet({ planetData }: PlanetProps) {
   const meshRef = useRef<Mesh>(null!)
   const groupRef = useRef<Group>(null!)
   const [clicked, setClicked] = useState(false)
-  
-  // Load texture with fallback handling
-  const texture = useLoader(TextureLoader, planetData.textureUrl, undefined, (error) => {
-    console.warn(`Failed to load texture for ${planetData.name}:`, error)
-  })
   
   // Memoize expensive calculations
   const radius = useMemo(() => getScaledRadius(planetData), [planetData])
   const rotationSpeed = useMemo(() => getRotationSpeed(planetData), [planetData])
   
   useFrame((state) => {
-    if (!meshRef.current) return
+    if (!meshRef.current || !groupRef.current) return
+    
+    // Calculate orbital position
+    const time = Date.now() * 0.001
+    const orbitalSpeed = getOrbitalSpeed(planetData)
+    const angle = time * orbitalSpeed
+    const distance = planetData.distanceFromSun * 10
+    
+    // Update orbital position
+    groupRef.current.position.x = distance * Math.cos(angle)
+    groupRef.current.position.z = distance * Math.sin(angle)
     
     // Planet self-rotation based on rotation period
     meshRef.current.rotation.y += rotationSpeed
     
-    // Update position if orbital position is provided
-    if (orbitalPosition && groupRef.current) {
-      groupRef.current.position.x = orbitalPosition.x
-      groupRef.current.position.z = orbitalPosition.z
-    }
-    
     // Subtle floating animation when clicked
-    if (clicked && groupRef.current) {
+    if (clicked) {
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.2
     }
   })
@@ -98,7 +96,6 @@ export default function Planet({ planetData, orbitalPosition }: PlanetProps) {
       >
         <sphereGeometry args={[radius, 32, 32]} />
         <meshStandardMaterial 
-          map={texture}
           color={planetData.color}
           roughness={0.8}
           metalness={0.2}
@@ -146,17 +143,15 @@ export default function Planet({ planetData, orbitalPosition }: PlanetProps) {
       ))}
       
       {/* Subtle orbit path indicator */}
-      {orbitalPosition && (
-        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.1, 0]}>
-          <ringGeometry args={[planetData.distanceFromSun * 10 - 0.05, planetData.distanceFromSun * 10 + 0.05, 64]} />
-          <meshBasicMaterial 
-            color={planetData.color} 
-            transparent 
-            opacity={clicked ? 0.3 : 0.08}
-            side={2}
-          />
-        </mesh>
-      )}
+      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.1, 0]}>
+        <ringGeometry args={[planetData.distanceFromSun * 10 - 0.05, planetData.distanceFromSun * 10 + 0.05, 64]} />
+        <meshBasicMaterial 
+          color={planetData.color} 
+          transparent 
+          opacity={clicked ? 0.3 : 0.08}
+          side={2}
+        />
+      </mesh>
       
       {/* Planet label (appears when clicked) */}
       {clicked && (
