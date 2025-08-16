@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { Suspense } from 'react'
-import Scene from './components/Scene'
+import SimpleScene from './components/SimpleScene'
 import ErrorBoundary from './components/ErrorBoundary'
 
 function LoadingFallback() {
@@ -24,9 +24,8 @@ function App() {
           <Canvas
             camera={{ position: [0, 5, 20], fov: 75 }}
             gl={{ antialias: true, alpha: false }}
-            shadows
           >
-            <Scene />
+            <SimpleScene />
             
             {/* Orbit controls for camera movement */}
             <OrbitControls 
